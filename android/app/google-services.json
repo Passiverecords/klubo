@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "986495727605",
+    "project_id": "klubo-406509",
+    "storage_bucket": "klubo-406509.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986495727605:android:c514a1dd8f1c02d55412bc",
+        "android_client_info": {
+          "package_name": "com.example.klubo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfd1Fk21zS945Ibc_M1jdVOGDbR_43zl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
