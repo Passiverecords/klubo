@@ -1,0 +1,33 @@
+name: klubo
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  realm: ^1.5.0
+  provider: ^6.1.1
+  firebase_core: ^2.23.0
+  firebase_auth: ^4.14.1
+  firebase_app_check: ^0.2.1+5
+  flutter_keyboard_visibility: ^5.4.1
+  flutter_otp_text_field: ^1.1.0+2
+  async: ^2.8.2
+  rxdart: ^0.27.2
+  mcp_realm:
+    path: ../packages/mcp_realm
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  melos: ^3.4.0
+
+flutter:
+  uses-material-design: true
+
