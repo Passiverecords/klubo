@@ -87,7 +87,6 @@ class Members extends _Members with RealmEntity, RealmObjectBase, RealmObject {
   }
 }
 
-// ignore_for_file: type=lint
 class Invitation extends _Invitation
     with RealmEntity, RealmObjectBase, RealmObject {
   Invitation(
@@ -142,7 +141,6 @@ class Invitation extends _Invitation
   }
 }
 
-// ignore_for_file: type=lint
 class Producer extends _Producer
     with RealmEntity, RealmObjectBase, RealmObject {
   Producer(
@@ -233,7 +231,6 @@ class Producer extends _Producer
   }
 }
 
-// ignore_for_file: type=lint
 class ProducerImages extends _ProducerImages
     with RealmEntity, RealmObjectBase, EmbeddedObject {
   ProducerImages({
@@ -275,7 +272,6 @@ class ProducerImages extends _ProducerImages
   }
 }
 
-// ignore_for_file: type=lint
 class ProducerLocations extends _ProducerLocations
     with RealmEntity, RealmObjectBase, EmbeddedObject {
   ProducerLocations({
@@ -339,7 +335,6 @@ class ProducerLocations extends _ProducerLocations
   }
 }
 
-// ignore_for_file: type=lint
 class ProducerLocationsGeo extends _ProducerLocationsGeo
     with RealmEntity, RealmObjectBase, EmbeddedObject {
   ProducerLocationsGeo({
@@ -382,7 +377,6 @@ class ProducerLocationsGeo extends _ProducerLocationsGeo
   }
 }
 
-// ignore_for_file: type=lint
 class ProducerMinimumOrder extends _ProducerMinimumOrder
     with RealmEntity, RealmObjectBase, EmbeddedObject {
   ProducerMinimumOrder({

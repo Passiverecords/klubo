@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../../realm/realm_models.dart';
-import '../../../realm/realm_services.dart';
+import 'package:mcp_realm/mcp_realm.dart';
 import '../../product_list_screen.dart';
 
 class UserInputForm extends StatefulWidget {
-  final RealmServices? realmService;
+  final McpRealmServices? realmService;
   final Members member;
 
   const UserInputForm(
@@ -38,7 +36,7 @@ class _UserInputFormState extends State<UserInputForm> {
   }
 
   Widget buildUserInputForm(
-      RealmServices? realmService, Members member, BuildContext context) {
+      McpRealmServices? realmService, Members member, BuildContext context) {
     return Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),

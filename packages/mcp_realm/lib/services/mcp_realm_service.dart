@@ -1,22 +1,20 @@
-import 'dart:async';
+library mcp_realm;
 
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:klubo/realm/realm_models.dart';
 import 'package:realm/realm.dart';
 
-class RealmServices with ChangeNotifier {
+import '../models/realm_models.dart';
+
+class McpRealmServices with ChangeNotifier {
   late Realm realm;
   Members? _currentUser;
   App app;
-  StreamController<Members?> userStreamController =
-      StreamController.broadcast();
 
   Members? get currentUser => _currentUser;
 
   set user(Members? user) {
     _currentUser = user;
-    userStreamController.add(user); // Emit new value to stream
     notifyListeners();
   }
 
@@ -31,7 +29,7 @@ class RealmServices with ChangeNotifier {
     }
   }
 
-  RealmServices(this.app) {
+  McpRealmServices(this.app) {
     if (app.currentUser != null) {
       var connectedUser = app.currentUser;
       realm = Realm(Configuration.flexibleSync(connectedUser!, [
