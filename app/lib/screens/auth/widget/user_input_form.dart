@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mcp_realm/mcp_realm.dart';
+import 'package:mcp/mcp.dart';
 import '../../product_list_screen.dart';
 
 class UserInputForm extends StatefulWidget {

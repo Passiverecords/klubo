@@ -528,8 +528,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.0"
-  mcp_realm:
+  mcp:
     dependency: "direct main"
+    description:
+      path: "../packages/mcp"
+      relative: true
+    source: path
+    version: "0.0.1"
+  mcp_foundation:
+    dependency: "direct overridden"
+    description:
+      path: "../packages/mcp_foundation"
+      relative: true
+    source: path
+    version: "0.0.1"
+  mcp_realm:
+    dependency: "direct overridden"
     description:
       path: "../packages/mcp_realm"
       relative: true
@@ -901,5 +915,5 @@ packages:
     source: hosted
     version: "2.1.1"
 sdks:
-  dart: ">=3.2.1 <4.0.0"
+  dart: ">=3.2.0-194.0.dev <4.0.0"
   flutter: ">=3.10.2"

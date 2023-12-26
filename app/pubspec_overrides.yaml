@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: mcp,mcp_foundation,mcp_realm
+dependency_overrides:
+  mcp:
+    path: ../packages/mcp
+  mcp_foundation:
+    path: ../packages/mcp_foundation
+  mcp_realm:
+    path: ../packages/mcp_realm
