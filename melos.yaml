@@ -3,18 +3,53 @@ name: klubo
 packages:
   - app/**
   - packages/**
-command:
-  version:
-    linkToCommits: false
-    workspaceChangelog: true
 
-  bootstrap:
-    runPubGetInParallel: true
-    usePubspecOverrides: true
+ignore:
 
 scripts:
-  generate:
-    run: melos exec -c 1 --depends-on="build_runner" --flutter -- "flutter pub run build_runner build --delete-conflicting-outputs"
-    description: Build all generated files for Flutter packages in this project.
+
+  format:
+    run: dart pub global run flutter_plugin_tools format
+    description: |
+      Build a specific example app for Android.
+       - Requires `flutter_plugin_tools` (`pub global activate flutter_plugin_tools`).
+       - Requires `clang-format` (can be installed via Brew on macOS).
+
   analyze:
-    exec: dart analyze .
+    run: |
+      melos exec -c 5 -- \
+        dart analyze .
+    description: |
+      Run `dart analyze` in all packages.
+       - Note: you can also rely on your IDEs Dart Analysis / Issues window.
+
+  generate:
+    run: melos run generate:dart && melos run generate:flutter
+    description: Build all generated files for Dart & Flutter packages in this project.
+
+  generate:dart:
+    run: melos exec -c 1 --depends-on="build_runner" --no-flutter -- "dart run build_runner build --delete-conflicting-outputs &"
+    description: Build all generated files for Dart packages in this project.
+
+  generate:flutter:
+    run: melos exec -c 1 --depends-on="build_runner" --flutter -- "flutter pub run build_runner build --delete-conflicting-outputs &"
+    description: Build all generated files for Flutter packages in this project.
+
+  test:
+    run: melos run test:flutter --no-select
+    description: Run all Dart & Flutter tests in this project.
+
+  test:flutter:
+    run: melos exec --dir-exists="test" -c 1 --fail-fast -- "flutter test --coverage"
+    description: Run Flutter tests for a specific package in this project.
+    select-package:
+      flutter: true
+      dir-exists: test
+
+  clean:
+    run: flutter clean
+    select-package:
+      flutter: true
+
+  clean:all:
+    run: melos exec -c 1 --fail-fast -- "flutter clean"
