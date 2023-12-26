@@ -3,13 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:klubo/layouts/base_layout.dart';
-import 'package:klubo/realm/app_services.dart';
+import 'package:mcp_realm/mcp_realm.dart';
 import 'package:provider/provider.dart';
 import 'package:realm/realm.dart' as realm;
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 import '../../main.dart';
-import '../../realm/realm_services.dart';
 import '../product_list_screen.dart';
 import 'widget/user_input_form.dart';
 
@@ -52,7 +51,7 @@ class _OtpAuthScreenState extends State<OtpAuthScreen> {
   }
 
   Future<void> _signInWithPhoneNumber() async {
-    final appServices = Provider.of<AppServices>(context, listen: false);
+    final appServices = Provider.of<McpAppService>(context, listen: false);
     final credential = firebase_auth.PhoneAuthProvider.credential(
         verificationId: widget.verificationId, smsCode: _codeController.text);
     LoadingHelper.show();
@@ -64,10 +63,11 @@ class _OtpAuthScreenState extends State<OtpAuthScreen> {
         var user = await appServices?.app.logIn(credentials);
         if (user != null) {
           appServices.updateFirebaseUser(user);
-          RealmServices? realmService;
+          McpRealmServices? realmService;
           while (realmService == null) {
             await Future.delayed(const Duration(seconds: 1));
-            realmService = Provider.of<RealmServices?>(context, listen: false);
+            realmService =
+                Provider.of<McpRealmServices?>(context, listen: false);
             if (realmService != null) {
               await Future.delayed(const Duration(seconds: 2));
               await realmService.setRealmSyncUser();

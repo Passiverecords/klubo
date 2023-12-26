@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:klubo/realm/app_services.dart';
 import 'package:klubo/screens/product_list_screen.dart';
 import 'package:klubo/screens/welcome_screen.dart';
 import 'package:klubo/theme/base_theme.dart';
@@ -15,22 +13,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  const mcpRealmProvider = McpRealmProvider(appId: 'memberapp-mfmwm');
   return runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: (_) => AppServices('memberapp-mfmwm', FirebaseAuth.instance),
-      ),
-      ChangeNotifierProxyProvider<AppServices, McpRealmServices?>(
-          create: (context) => null,
-          update: (BuildContext context, AppServices appServices,
-              McpRealmServices? realmServices) {
-            return appServices.app.currentUser != null
-                ? McpRealmServices(
-                    appServices.app,
-                  )
-                : null;
-          })
-    ],
+    providers: [mcpRealmProvider.appProvider, mcpRealmProvider.realmProvider],
     child: const App(),
   ));
 }
@@ -41,7 +26,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final realm = Provider.of<McpRealmServices?>(context, listen: false);
-    final app = Provider.of<AppServices>(context, listen: false);
+    final app = Provider.of<McpAppService>(context, listen: false);
     app.auth.setSettings(
         appVerificationDisabledForTesting: true, forceRecaptchaFlow: false);
     return MaterialApp(

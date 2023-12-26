@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:klubo/realm/app_services.dart';
-import 'package:klubo/realm/realm_models.dart';
-import 'package:klubo/realm/realm_services.dart';
+import 'package:mcp_realm/mcp_realm.dart';
 import 'package:provider/provider.dart';
 import 'package:realm/realm.dart';
 
@@ -19,8 +17,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final appServices = Provider.of<AppServices>(context, listen: false);
-    final realmService = Provider.of<RealmServices?>(context, listen: false);
+    final appServices = Provider.of<McpAppService>(context, listen: false);
+    final realmService = Provider.of<McpRealmServices?>(context, listen: false);
     RealmResults<Producer>? producer = realmService?.realm.all<Producer>();
     if (realmService != null) {
       producer;
