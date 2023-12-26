@@ -1,7 +1,2 @@
-library mcp;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:mcp_foundation/mcp_foundation.dart';
+export 'package:mcp_realm/mcp_realm.dart';
