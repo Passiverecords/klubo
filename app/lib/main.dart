@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:klubo/screens/product_list_screen.dart';
 import 'package:klubo/screens/welcome_screen.dart';
 import 'package:klubo/theme/base_theme.dart';
-import 'package:mcp_realm/mcp_realm.dart';
+import 'package:mcp/mcp.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
